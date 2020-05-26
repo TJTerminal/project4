@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
-import SignupPage from './pages/SignupPage/SignupPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 function App() {
   return (
