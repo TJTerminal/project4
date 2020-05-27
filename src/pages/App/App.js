@@ -43,13 +43,13 @@ class App extends Component {
           <Link to="/login">
             LogIn
           </Link>
-          <Route path="/signup" component={() => 
+          <Route path="/signup" component={( history ) => 
           <SignupPage 
             history={history} 
             handleSignupOrLogin={this.handleSignupOrLogin}
           />
           } />
-          <Route path="/login" component={() => 
+          <Route path="/login" component={( history ) => 
           <LoginPage 
             history={history} 
             handleSignupOrLogin={this.handleSignupOrLogin}
