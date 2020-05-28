@@ -5,6 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import MainPage from '../MainPage/MainPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import NavBar from '../../components/NavBar/NavBar';
 
 import userService from '../../utils/userService';
 
@@ -30,20 +31,28 @@ class App extends Component {
     return (
       <div className="App">
         <header className='header-footer'>Funny &nbsp;&nbsp;&nbsp;  Historical Facts</header>
+
+        <NavBar 
+          user={this.state.user} 
+          handleLogout={this.handleLogout}
+        />
         <Switch>
-          <Route exact path='/' render={() => {
+          {/* <Route exact path='/' render={() => {
             <MainPage 
               user={this.state.user}
               handleLogout={this.handleLogout}
             />
-          }} />
-          <Link to="/signup">
+          }} /> */}
+
+          
+
+          {/* <Link to="/signup">
             SignUp
           </Link>
 
           <Link to="/login">
             LogIn
-          </Link>
+          </Link> */}
           <Route path="/signup" component={( history ) => 
           <SignupPage 
             history={history} 
