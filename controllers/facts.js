@@ -11,21 +11,21 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        const fact = awaitFact.create(req.body);
+        const fact = await Fact.create(req.body);
         res.status(200).json(fact);
     } catch(err) {
         res.status(500).json(err);
     }
 }
 
-async function show(req, res) {
-    try {
-        const facts = await Fact.findById(req.params.id).populate('votes');
-        res.status(200).json(facts)
-    } catch(err) {
-        res.status(500).json(err)
-    }
-}
+// async function show(req, res) {
+//     try {
+//         const facts = await Fact.findById(req.params.id).populate('votes');
+//         res.status(200).json(facts)
+//     } catch(err) {
+//         res.status(500).json(err)
+//     }
+// }
 
 function update(req, res) {
     try {
@@ -48,7 +48,7 @@ async function deleteOne(req, res) {
 module.exports = {
     index,
     create,
-    show,
+    // show,
     update,
     deleteOne
 }
