@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
+import { withRouter } from 'react-router';
 
 class SignupForm extends Component {
   state = {
@@ -9,6 +10,10 @@ class SignupForm extends Component {
     password: '',
     passwordConf: ''
   };
+
+  componentDidMount = () => {
+    console.log(this.props)
+  }
 
   handleChange = (e) => {
     this.props.updateMessage('');
@@ -72,4 +77,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);

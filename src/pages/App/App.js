@@ -36,15 +36,14 @@ class App extends Component {
           user={this.state.user} 
           handleLogout={this.handleLogout}
         />
+
         <Switch>
-          {/* <Route exact path='/' render={() => {
+          <Route exact path='/' render={() =>
             <MainPage 
               user={this.state.user}
               handleLogout={this.handleLogout}
             />
-          }} /> */}
-
-          
+          } />
 
           {/* <Link to="/signup">
             SignUp
