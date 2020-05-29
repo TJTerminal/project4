@@ -4,6 +4,7 @@ const SECRET = process.env.SECRET;
 
 async function signup(req, res) {
   const user = new User(req.body);
+  console.log("hitting!!!")
   try {
     await user.save();
     // TODO: Send back a JWT instead of the user

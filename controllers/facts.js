@@ -27,7 +27,7 @@ async function create(req, res) {
 //     }
 // }
 
-function update(req, res) {
+async function update(req, res) {
     try {
         const updateFact = await Fact.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.status(200).json(updateFact);

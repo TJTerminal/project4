@@ -12,6 +12,12 @@ const factSchema = Schema({
         type: String,
         required: true
     },
+
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    
     // votes is foreign key
     votes: [{type: Schema.Types.ObjectId, ref: 'User'}]
 }, {

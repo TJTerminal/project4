@@ -7,13 +7,13 @@ router.get('/', factsCtrl.index);
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
 
-router.post('/', checkAuth, factsCtrl.create);
-router.put('/:id', checkAuth, factsCtrl.update);
-router.delete('/:id', checkAuth, factsCtrl.deleteOne);
+router.post('/', factsCtrl.create);
+router.put('/:id', factsCtrl.update);
+router.delete('/:id', factsCtrl.deleteOne);
 
-function checkAuth(req, res, next) {
-    if (req.user) return next();
-    return res.status(401).json({err: 'Not Authorized'});
-}
+// function checkAuth(req, res, next) {
+//     if (req.user) return next();
+//     return res.status(401).json({err: 'Not Authorized'});
+// }
 
 module.exports = router;

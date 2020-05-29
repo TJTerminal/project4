@@ -7,6 +7,8 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
+import AddFact from '../../components/AddFactPage/AddFactPage';
+
 import userService from '../../utils/userService';
 
 
@@ -15,6 +17,7 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
+      facts: [],
     };
   }
 
@@ -25,6 +28,14 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
+  }
+
+  handleAddFact = (facts) => {
+    this.setState()
+  }
+
+  handleSubmit = () => {
+    this.setState()
   }
   
   render() {
@@ -42,6 +53,12 @@ class App extends Component {
             <MainPage 
               user={this.state.user}
               handleLogout={this.handleLogout}
+            />
+          } />
+
+          <Route exact path='/addfact' render={() => 
+            <AddFact 
+            user={this.state.user}
             />
           } />
           
