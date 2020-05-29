@@ -11,6 +11,7 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
+        console.log(req.body)
         const fact = await Fact.create(req.body);
         res.status(200).json(fact);
     } catch(err) {

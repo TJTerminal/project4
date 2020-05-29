@@ -5,10 +5,10 @@ function addFactPage(props) {
     return(
         <div>
             <form onSubmit={props.handleSubmit}>
-                <title>{props.fact.name}</title>
+                <title>addFactPage</title>
                 <textarea 
                     placeholder='Enter a Fact...'
-                    name='content'
+                    name='newFact'
                     onChange={props.handleChange}
                 />
                 <button type='submit'>POST</button>

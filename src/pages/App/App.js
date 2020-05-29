@@ -10,6 +10,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import AddFact from '../../components/AddFactPage/AddFactPage';
 
 import userService from '../../utils/userService';
+import factService from '../../utils/factService';
 
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      facts: [],
+      newFact: '',
     };
   }
 
@@ -30,12 +31,20 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
-  handleAddFact = (facts) => {
-    this.setState()
+  // handleAddFact = (facts) => {
+  //   this.setState()
+  // }
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    factService.addFact(this.state.newFact);
+    
   }
 
-  handleSubmit = () => {
-    this.setState()
+  handleChange = e => {
+    this.setState( {
+      [e.target.name]: e.target.value
+    } )
   }
   
   render() {
@@ -53,14 +62,16 @@ class App extends Component {
             <MainPage 
               user={this.state.user}
               handleLogout={this.handleLogout}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
             />
           } />
 
-          <Route exact path='/addfact' render={() => 
+          {/* <Route path='/addfact' render={() => 
             <AddFact 
             user={this.state.user}
             />
-          } />
+          } /> */}
           
           <Route path="/signup" component={( history ) => 
           <SignupPage 
