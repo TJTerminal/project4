@@ -72,14 +72,14 @@ class App extends Component {
             />
           } /> */}
           
-          <Route path="/signup" component={( history ) => 
+          <Route exact path="/signup" component={( history ) => 
           <SignupPage 
             history={history} 
             handleSignupOrLogin={this.handleSignupOrLogin}
           />
           } />
 
-          <Route path="/login" component={( history ) => 
+          <Route exact path="/login" component={( history ) => 
           <LoginPage 
             history={history} 
             handleSignupOrLogin={this.handleSignupOrLogin}

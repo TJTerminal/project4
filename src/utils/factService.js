@@ -2,6 +2,16 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/facts/';
 
+function index() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(BASE_URL, options).then(res => res.json());
+}
+
 // function addFact(newFact) {
 //   return fetch(BASE_URL, {
 //     method: 'POST',
@@ -71,7 +81,8 @@ function addFact(newFact) {
 // }
 
 export default {
-    addFact,
-    // deleteOne,
-    // update
+  index,
+  addFact,
+  // deleteOne,
+  // update
 }
