@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm';
-// import './SignupPage.css';
+import './SignupPage.css';
 
 class SignupPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {message: ''}
   }
 
@@ -18,9 +18,8 @@ class SignupPage extends Component {
         <SignupForm 
           {...this.props}
           updateMessage={this.updateMessage} 
-          
         />
-        <p>Hello this is signup!</p>
+        <p>{this.state.message}</p>
       </div>
     );
   }

@@ -38,7 +38,6 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     factService.addFact(this.state.newFact);
-    this.props.handleSubmit(e);
   }
 
   handleChange = e => {

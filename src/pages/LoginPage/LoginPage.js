@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './LoginPage.css';
+import './LoginPage.css';
 import userService from '../../utils/userService';
 
 class LoginPage extends Component {
@@ -15,21 +15,6 @@ class LoginPage extends Component {
     this.setState({
         [e.target.name]: e.target.value
     })
-  }
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Update to call login instead of signup
-      await userService.login(this.state);
-      // Let <App> know a user has signed up!
-      this.props.handleSignupOrLogin();
-      // Successfully signed up - show GamePage
-      this.props.history.push('/');
-    } catch (err) {
-      // Use a modal or toast in your apps instead of alert
-      alert('Invalid Credentials!');
-    }
   }
 
   handleSubmit = async (e) => {

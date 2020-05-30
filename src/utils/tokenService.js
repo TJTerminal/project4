@@ -17,7 +17,7 @@ function getToken() {
         token = null;
         }
     }
-      return token;
+    return token;
 }
 
 function getUserFromToken () {
@@ -29,9 +29,9 @@ function removeToken() {
   localStorage.removeItem('token');
 }
 
-  export default {
-      setToken,
-      getToken,
-      getUserFromToken,
-      removeToken
-  }
+export default {
+  setToken,
+  getToken,
+  getUserFromToken,
+  removeToken
+}

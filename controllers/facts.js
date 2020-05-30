@@ -10,6 +10,7 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+    console.log('hitting controllers create!!')
     try {
         console.log(req.body)
         const fact = await Fact.create(req.body);
