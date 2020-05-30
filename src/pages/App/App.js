@@ -35,10 +35,10 @@ class App extends Component {
   //   this.setState()
   // }
 
-  handleSubmit = (evt) => {
-    evt.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
     factService.addFact(this.state.newFact);
-    
+    this.props.handleSubmit(e);
   }
 
   handleChange = e => {

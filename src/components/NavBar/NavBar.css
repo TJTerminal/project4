@@ -1,13 +1,14 @@
 .NavBar {
     display: flex;
-    justify-content: center;
-    margin: 0 0 20px;
+    justify-content: flex-end;
+    margin: 0 20rem;
+    flex-direction: column;
   }
   
-  .NavBar-link {
-    margin: 0 10px;
-  }
-  
-  .NavBar-welcome {
-    color: grey;
-  }
+.NavBar-link {
+  margin: 0 10px;
+}
+
+.NavBar-welcome {
+  color: grey;
+}
