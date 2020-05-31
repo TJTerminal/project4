@@ -7,7 +7,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
-import AddFact from '../../components/AddFactPage/AddFactPage';
+import AddFact from '../AddFactPage/AddFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
@@ -31,20 +31,25 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  async componentDidMount() {
+    const newFact = await factService.index();
+    this.setState({ newFact: newFact })
+  }
+
   // handleAddFact = (facts) => {
   //   this.setState()
   // }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    factService.addFact(this.state.newFact);
-  }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   factService.addFact(this.state.newFact);
+  // }
 
-  handleChange = e => {
-    this.setState( {
-      [e.target.name]: e.target.value
-    } )
-  }
+  // handleChange = e => {
+  //     this.setState( {
+  //         [e.target.name]: e.target.value
+  //     } )
+  // }
   
   render() {
     return (
@@ -57,7 +62,8 @@ class App extends Component {
         />
 
         <Switch>
-          <Route exact path='/' render={() =>
+          <Route exact path='/' render={() => 
+            userService.getUser() ?
             <MainPage 
               user={this.state.user}
               handleLogout={this.handleLogout}
@@ -66,12 +72,6 @@ class App extends Component {
             />
           } />
 
-          {/* <Route path='/addfact' render={() => 
-            <AddFact 
-            user={this.state.user}
-            />
-          } /> */}
-          
           <Route exact path="/signup" component={( history ) => 
           <SignupPage 
             history={history} 

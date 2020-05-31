@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import factService from '../../utils/factService';
 
-function addFactPage(props) {
-    
+function addFactForm(props) {
     return(
-        <div>
+        <div clasName='panel panel-default'>
             <form onSubmit={props.handleSubmit}>
-                <title>addFactPage</title>
+                <title>{fact.title}</title>
                 <textarea 
                     placeholder='Enter a Fact...'
                     name='newFact'
@@ -17,4 +18,4 @@ function addFactPage(props) {
     )
 }
 
-export default addFactPage;
+export default addFactForm;

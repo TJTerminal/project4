@@ -11,6 +11,7 @@ async function index(req, res) {
 
 async function create(req, res) {
     console.log('hitting controllers create!!')
+    console.log('user: ', req.user)
     try {
         console.log(req.body)
         const fact = await Fact.create(req.body);
@@ -20,14 +21,14 @@ async function create(req, res) {
     }
 }
 
-// async function show(req, res) {
-//     try {
-//         const facts = await Fact.findById(req.params.id).populate('votes');
-//         res.status(200).json(facts)
-//     } catch(err) {
-//         res.status(500).json(err)
-//     }
-// }
+async function show(req, res) {
+    try {
+        const facts = await Fact.findById(req.params.id).populate('votes');
+        res.status(200).json(facts)
+    } catch(err) {
+        res.status(500).json(err)
+    }
+}
 
 async function update(req, res) {
     try {
@@ -50,7 +51,7 @@ async function deleteOne(req, res) {
 module.exports = {
     index,
     create,
-    // show,
+    show,
     update,
     deleteOne
 }

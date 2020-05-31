@@ -2,31 +2,37 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import NavBar from '../../components/NavBar/NavBar';
-import AddFactPage from '../../components/AddFactPage/AddFactPage';
+import AddFactPage from '../AddFactPage/AddFactPage';
+import userService from '../../utils/userService';
+import factService from '../../utils/factService';
 
 class MainPage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            user: userService.getUser(),
+            newFact: '',
+        }
+    }
 
-    // handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     factService.addFact(this.state.newFact);
-    //     this.props.handleSubmit(e);
-    //   }
-    
-    // handleChange = e => {
-    //     this.setState( {
-    //         [e.target.name]: e.target.value
-    //     } )
-    // }
-
+    async componentDidMount() {
+        const newFact = await factService.index();
+        this.setState({ newFact: newFact })
+    }
     
     render() {
         return(
             <div className="MainPage">
-               
-                <AddFactPage 
+               {this.state.newFact.map((fact, idx) => (
+                   
+                   <AddFactPage 
                     handleSubmit={this.props.handleSubmit} 
                     handleChange={this.props.handleChange}
-                />
+                    key={idx}
+                    fact={fact}
+                    />
+               ) )}
+                
                 <h1>This is MainPage!</h1>
             </div>
         )
