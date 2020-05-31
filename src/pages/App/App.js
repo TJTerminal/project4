@@ -11,6 +11,7 @@ import AddFact from '../AddFactPage/AddFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
+import AddFactPage from '../AddFactPage/AddFactPage';
 
 
 class App extends Component {
@@ -32,13 +33,25 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const newFact = await factService.index();
+    const newFact = await factService.getAll();
     this.setState({ newFact: newFact })
   }
 
-  // handleAddFact = (facts) => {
-  //   this.setState()
-  // }
+  async handleAddFact(fact) {
+    const newFact = await factService.create(fact);
+    this.setState(state => ({
+      newFact: newFact
+    }),
+    () => this.props.history.push('/')
+    )
+  }
+
+  async handleDeleteFact(id) {
+    await factService.deleteOne(id);
+    this.setState(state => ({
+      newFact: state.newFact.filter()
+    }))
+  }
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -63,13 +76,21 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/' render={() => 
-            userService.getUser() ?
+            
             <MainPage 
               user={this.state.user}
-              handleLogout={this.handleLogout}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
+              handleDeleteFact={this.handleDeleteFact}
+              newFact={this.state.newFact}
+              // handleLogout={this.handleLogout}
+              // handleSubmit={this.handleSubmit}
+              // handleChange={this.handleChange}
             />
+          } />
+
+          <Route exact path="/add" render={() => 
+          <AddFactPage 
+            handleAddFact={this.handleAddFact}
+          />
           } />
 
           <Route exact path="/signup" component={( history ) => 
