@@ -12,7 +12,7 @@ function AddFactForm({props, fact, handleDeleteFact, user}) {
                     <title>{fact.title}</title>
                     <textarea 
                         placeholder='Enter a Fact...'
-                        name='newFact'
+                        name='content'
                         onChange={props.handleChange}
                     />
                     <button type='submit'>POST</button>

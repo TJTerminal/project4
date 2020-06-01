@@ -33,20 +33,27 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    console.log(this.state);
+    console.log(this.state.user);
     const newFact = await factService.index();
     this.setState({ fact: newFact })
   }
 
-  async handleAddFact(newFactData) {
+  handleAddFact = async newFactData => {
+    newFactData.user = this.state.user.id
     const newFact = await factService.addFact(newFactData);
-    this.setState(state => ({
-      fact: [...state.fact, newFact]
-    }),
-    () => this.props.history.push('/')
-    )
+    const oldFact = this.state.fact;
+    oldFact.push(newFact)
+    this.setState({ newFact: oldFact })
+    // this.setState({ fact: [...this.state.fact, newFact] })
+    // this.setState(state => ({
+    //   fact: [...state.fact, newFact]
+    // }),
+    // () => this.props.history.push('/')
+    // )
   }
 
-  async handleDeleteFact(id) {
+  handleDeleteFact = async id => {
     await factService.deleteOne(id);
     this.setState(state => ({
       fact: state.fact.filter(p => p.id !== id)
@@ -54,7 +61,7 @@ class App extends Component {
     )
   }
 
-  async handleUpdateFact(updatedFactData) {
+  handleUpdateFact = async updatedFactData => {
     const updatedFact = await factService.update(updatedFactData);
     const newUpdatedFact = this.state.newFact.map(fact =>
       fact._id === updatedFact._id ? updatedFact : fact
@@ -98,6 +105,7 @@ class App extends Component {
           <Route exact path="/add" render={() => 
             <AddFactPage 
               handleAddFact={this.handleAddFact}
+              user={this.state.user}
             />
           } />
 

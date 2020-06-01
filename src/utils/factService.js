@@ -1,8 +1,9 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/facts/';
+const BASE_URL = '/api/facts';
 
 function index() {
+  
   const options = {
     method: 'GET',
     headers: {
@@ -41,7 +42,7 @@ function index() {
 // }
 
 function addFact(newFact) {
-  console.log(newFact)
+  console.log('newfact: ', newFact)
     const options = {
       method: 'POST',
       headers: {

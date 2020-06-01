@@ -37,7 +37,7 @@ class AddFactPage extends Component {
                 <title>Title</title>
                 <textarea 
                     placeholder='Enter a Fact...'
-                    name='newFact'
+                    name='content'
                     onChange={this.handleChange}
                 />
                 <button 
