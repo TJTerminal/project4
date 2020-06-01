@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const newFact = await factService.getAll();
+    const newFact = await factService.index();
     this.setState({ newFact: newFact })
   }
 

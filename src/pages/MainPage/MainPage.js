@@ -10,7 +10,7 @@ import addFactForm from '../../components/AddFactForm/AddFactForm';
 
 function MainPage(props) {
     return (
-        <div>
+        <div className='MainPage'>
             {props.newFact.map(fact => 
                 fact.owner===props.user._id ?
                 <addFactForm 
@@ -18,6 +18,8 @@ function MainPage(props) {
                     fact={fact}
                     handleDeleteFact={props.handleDeleteFact}
                 />
+                :
+                <> </>
                 )}
         </div>
     )

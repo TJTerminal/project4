@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 class AddFactPage extends Component {
     constructor() {
         super();
-        this.state = {newFact: '',}
+        this.state = {
+            newFact: '',
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        factService.addFact(this.state.newFact);
+        this.props.factService.addFact(this.state.newFact);
       }
     
     handleChange = e => {
@@ -21,11 +23,11 @@ class AddFactPage extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                <title>{fact.title}</title>
+                <title>Title</title>
                 <textarea 
                     placeholder='Enter a Fact...'
                     name='newFact'
-                    onChange={props.handleChange}
+                    onChange={this.handleChange}
                 />
                 <button type='submit'>POST</button>
                 </form>
