@@ -8,6 +8,8 @@ class AddFactPage extends Component {
         }
     }
 
+    formRef = React.createRef();
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.factService.addFact(this.state.newFact);

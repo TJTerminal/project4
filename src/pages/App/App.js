@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import MainPage from '../MainPage/MainPage';
 import SignupPage from '../SignupPage/SignupPage';
@@ -19,7 +19,7 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      newFact: '',
+      newFact: [],
     };
   }
 
