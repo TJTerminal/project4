@@ -17,7 +17,7 @@
 
 ### Getting Started
 
-#### Trello Board
+#### Trello Board [Trello Board Link](https://trello.com/b/xO2DSOUq/project-4-funny-historical-facts-competition)
 
 #### App Site
 

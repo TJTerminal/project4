@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import factService from '../../utils/factService';
-import userService from '../../utils/userService';
+// import factService from '../../utils/factService';
+// import userService from '../../utils/userService';
 
 function AddFactForm({props, fact, handleDeleteFact, user}) {
-    return(
+    return (
         <div clasName='panel panel-default'>
             <h1>Add Fact Form</h1>
             <div className='panel-body'>
