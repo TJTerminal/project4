@@ -19,7 +19,7 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      newFact: [],
+      fact: [],
     };
   }
 
@@ -34,13 +34,13 @@ class App extends Component {
 
   async componentDidMount() {
     const newFact = await factService.index();
-    this.setState({ newFact: newFact })
+    this.setState({ fact: newFact })
   }
 
-  async handleAddFact(fact) {
-    const newFact = await factService.create(fact);
+  async handleAddFact(newFactData) {
+    const newFact = await factService.addFact(newFactData);
     this.setState(state => ({
-      newFact: newFact
+      fact: [...state.fact, newFact]
     }),
     () => this.props.history.push('/')
     )
@@ -49,8 +49,9 @@ class App extends Component {
   async handleDeleteFact(id) {
     await factService.deleteOne(id);
     this.setState(state => ({
-      newFact: state.newFact.filter()
-    }))
+      fact: state.fact.filter(p => p.id !== id)
+    }), () => this.props.history.push('/')
+    )
   }
 
   async handleUpdateFact(updatedFactData) {
@@ -90,10 +91,7 @@ class App extends Component {
             <MainPage 
               user={this.state.user}
               handleDeleteFact={this.handleDeleteFact}
-              newFact={this.state.newFact}
-              // handleLogout={this.handleLogout}
-              // handleSubmit={this.handleSubmit}
-              // handleChange={this.handleChange}
+              fact={this.state.fact}
             />
           } />
 

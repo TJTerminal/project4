@@ -4,7 +4,11 @@ class AddFactPage extends Component {
     constructor() {
         super();
         this.state = {
-            newFact: '',
+            factData: {
+                title: '',
+                content: '',
+            },
+            invalidForm: true,
         }
     }
 
@@ -12,26 +16,34 @@ class AddFactPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.factService.addFact(this.state.newFact);
+        this.props.handleAddFact(this.state.factData);
       }
     
     handleChange = e => {
+        const factData = {...this.state.factData, [e.target.name]: e.target.value};
         this.setState( {
-            [e.target.name]: e.target.value
+            factData,
+            invalidForm: !this.formRef.current.checkValidity()
         } )
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form 
+                    onSubmit={this.handleSubmit}
+                    ref={this.formRef}
+                >
                 <title>Title</title>
                 <textarea 
                     placeholder='Enter a Fact...'
                     name='newFact'
                     onChange={this.handleChange}
                 />
-                <button type='submit'>POST</button>
+                <button 
+                    type='submit'
+                    disabled={this.state.invalidForm}
+                >POST</button>
                 </form>
             </div>
         )

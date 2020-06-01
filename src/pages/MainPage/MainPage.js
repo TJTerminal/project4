@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './MainPage.css';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // import NavBar from '../../components/NavBar/NavBar';
@@ -6,17 +7,17 @@ import React, { Component } from 'react';
 // import userService from '../../utils/userService';
 // import factService from '../../utils/factService';
 
-import addFactForm from '../../components/AddFactForm/AddFactForm';
+import AddFactForm from '../../components/AddFactForm/AddFactForm';
 
 function MainPage(props) {
     return (
         <div className='MainPage'>
-            {props.newFact.map(fact => 
-                fact.owner===props.user._id ?
-                <addFactForm 
+            {props.fact.map(newFact => 
+                newFact.owner===props.user._id ?
+                <AddFactForm 
                     user={props.user}
-                    key={fact._id}
-                    fact={fact}
+                    key={newFact._id}
+                    newFact={newFact}
                     handleDeleteFact={props.handleDeleteFact}
                 />
                 :
