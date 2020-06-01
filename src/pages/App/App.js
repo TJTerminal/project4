@@ -7,7 +7,8 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
-import AddFact from '../AddFactPage/AddFactPage';
+import AddFactPage from '../AddFactPage/AddFactPage';
+import UpdateFactPage from '../UpdateFactPage/UpdateFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
@@ -53,6 +54,17 @@ class App extends Component {
     }))
   }
 
+  async handleUpdateFact(updatedFact) {
+    const updatedFact = await factService.update(updatedFact);
+    const newUpdatedFact = this.state.newFact.map(fact =>
+      fact._id === updatedFact._id ? updatedFact : fact
+    );
+    this.setState(
+      {newFact: newUpdatedFact},
+      () => this.props.history.push('/')
+    );
+  }
+
   // handleSubmit = (e) => {
   //   e.preventDefault();
   //   factService.addFact(this.state.newFact);
@@ -76,7 +88,6 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/' render={() => 
-            
             <MainPage 
               user={this.state.user}
               handleDeleteFact={this.handleDeleteFact}
@@ -88,23 +99,29 @@ class App extends Component {
           } />
 
           <Route exact path="/add" render={() => 
-          <AddFactPage 
-            handleAddFact={this.handleAddFact}
-          />
+            <AddFactPage 
+              handleAddFact={this.handleAddFact}
+            />
+          } />
+
+          <Route exact path="/edit" render={() => 
+            <UpdateFactPage 
+              handleUpdateFact={this.handleUpdateFact}
+            />
           } />
 
           <Route exact path="/signup" component={( history ) => 
-          <SignupPage 
-            history={history} 
-            handleSignupOrLogin={this.handleSignupOrLogin}
-          />
+            <SignupPage 
+              history={history} 
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
           } />
 
           <Route exact path="/login" component={( history ) => 
-          <LoginPage 
-            history={history} 
-            handleSignupOrLogin={this.handleSignupOrLogin}
-          />
+            <LoginPage 
+              history={history} 
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
           }/>
         </Switch>
       </div>

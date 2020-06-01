@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom';
 import factService from '../../utils/factService';
 import userService from '../../utils/userService';
 
-function addFactForm(props) {
+function addFactForm({fact, handleDeleteFact}) {
     return(
         <div clasName='panel panel-default'>
-            <form onSubmit={props.handleSubmit}>
-                <title>title</title>
-                <textarea 
-                    placeholder='Enter a Fact...'
-                    name='newFact'
-                    onChange={props.handleChange}
-                />
-                <button type='submit'>POST</button>
-            </form>
+            <div className='panel-body'>
+                <form onSubmit={props.handleSubmit}>
+                    <title>title</title>
+                    <textarea 
+                        placeholder='Enter a Fact...'
+                        name='newFact'
+                        onChange={props.handleChange}
+                    />
+                    <button type='submit'>POST</button>
+                </form>
+            </div>
             <div className='panel-footer'>
             {newFact.owner===user._id ?
                 <Link 
