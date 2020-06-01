@@ -12,7 +12,6 @@ import UpdateFactPage from '../UpdateFactPage/UpdateFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
-import AddFactPage from '../AddFactPage/AddFactPage';
 
 
 class App extends Component {
@@ -54,8 +53,8 @@ class App extends Component {
     }))
   }
 
-  async handleUpdateFact(updatedFact) {
-    const updatedFact = await factService.update(updatedFact);
+  async handleUpdateFact(updatedFactData) {
+    const updatedFact = await factService.update(updatedFactData);
     const newUpdatedFact = this.state.newFact.map(fact =>
       fact._id === updatedFact._id ? updatedFact : fact
     );

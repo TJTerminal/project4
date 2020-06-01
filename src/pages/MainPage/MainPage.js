@@ -14,6 +14,7 @@ function MainPage(props) {
             {props.newFact.map(fact => 
                 fact.owner===props.user._id ?
                 <addFactForm 
+                    user={props.user}
                     key={fact._id}
                     fact={fact}
                     handleDeleteFact={props.handleDeleteFact}
