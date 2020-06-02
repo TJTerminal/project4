@@ -9,7 +9,13 @@ function AddFactForm({props, fact, handleDeleteFact, user}) {
             <h1>Add Fact Form</h1>
             <div className='panel-body'>
                 <form onSubmit={props.handleSubmit}>
-                    <title>{fact.title}</title>
+                    
+                    <textarea 
+                        placeholder='Enter a title...'
+                        name='title'
+                        onChange={props.handleChange}
+                    />
+
                     <textarea 
                         placeholder='Enter a Fact...'
                         name='content'

@@ -3,7 +3,6 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/facts';
 
 function index() {
-  
   const options = {
     method: 'GET',
     headers: {

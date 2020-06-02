@@ -17,8 +17,8 @@ class AddFactPage extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const formData = this.state.factData;
-        console.log('user: ', this.props.user.id);
-        formData.user = this.props.user.id;
+        console.log('user: ', this.props.user._id);
+        formData.user = this.props.user._id;
         await this.setState({factData: formData});
         console.log('sending the following fact to handleAddFact from AddFactPage inside handleSubmit');
         console.log(formData);
@@ -40,7 +40,13 @@ class AddFactPage extends Component {
                     onSubmit={this.handleSubmit}
                     ref={this.formRef}
                 >
-                <title>Title</title>
+                
+                <textarea 
+                    placeholder='Enter a title...'
+                    name='title'
+                    onChange={this.handleChange}
+                />
+
                 <textarea 
                     placeholder='Enter a Fact...'
                     name='content'
