@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import MainPage from '../MainPage/MainPage';
 import SignupPage from '../SignupPage/SignupPage';
@@ -95,11 +95,14 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/' render={() => 
+            userService.getUser() ?
             <MainPage 
               user={this.state.user}
               handleDeleteFact={this.handleDeleteFact}
               fact={this.state.fact}
             />
+            :
+            <Redirect to='/login' />
           } />
 
           <Route exact path="/add" render={() => 

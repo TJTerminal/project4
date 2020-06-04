@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 
 class AddFactPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-            factData: {
-                title: '',
-                content: '',
-            },
-            invalidForm: true,
-        }
-    }
-
+    state = {
+        factData: {
+            title: '',
+            content: '',
+        },
+        invalidForm: true,
+    };
+   
     formRef = React.createRef();
 
     handleSubmit = async (e) => {
@@ -36,26 +33,27 @@ class AddFactPage extends Component {
     render() {
         return (
             <div>
-                <form 
-                    onSubmit={this.handleSubmit}
-                    ref={this.formRef}
-                >
-                
-                <textarea 
-                    placeholder='Enter a title...'
-                    name='title'
-                    onChange={this.handleChange}
-                />
-
-                <textarea 
-                    placeholder='Enter a Fact...'
-                    name='content'
-                    onChange={this.handleChange}
-                />
-                <button 
-                    type='submit'
-                    disabled={this.state.invalidForm}
-                >POST</button>
+                <h1>Add Fact</h1>
+                <form onSubmit={this.handleSubmit} ref={this.formRef}>
+                    <div className='form-group'>
+                        <label>Fact Title:</label>
+                        <textarea 
+                            placeholder='Enter a title...'
+                            name='title'
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label>Fact Content:</label>
+                        <textarea 
+                            placeholder='Enter a Fact...'
+                            name='content'
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button type='submit' disabled={this.state.invalidForm}>
+                        ADD FACT
+                    </button>
                 </form>
             </div>
         )

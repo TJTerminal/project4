@@ -21,6 +21,7 @@ function MainPage(props) {
                 //     newFact={newFact}
                 //     handleDeleteFact={props.handleDeleteFact}
                 // />
+               
                 newFact.title + 
                 newFact.content
                 // :
