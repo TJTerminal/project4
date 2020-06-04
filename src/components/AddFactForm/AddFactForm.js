@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import factService from '../../utils/factService';
 // import userService from '../../utils/userService';
 
-function AddFactForm({fact, handleDeleteFact, user, idx}) {
+function AddFactForm({newFact, handleDeleteFact, user, idx}) {
     return (
         <div clasName='panel panel-default'>
             <h1>Add Fact Form</h1>
@@ -13,9 +13,9 @@ function AddFactForm({fact, handleDeleteFact, user, idx}) {
             <div className='panel-body'>
                 <dl>
                     <dt>Title:</dt>
-                    <dd>{fact.title}</dd>
+                    <dd>{newFact.title}</dd>
                     <dt>Content:</dt>
-                    <dd>{fact.content}</dd>
+                    <dd>{newFact.content}</dd>
                 </dl>
                 {/* <form onSubmit={props.handleSubmit}>
                     
@@ -39,7 +39,7 @@ function AddFactForm({fact, handleDeleteFact, user, idx}) {
                     className='btn'
                     to={{
                         pathname: '/edit',
-                        state: {fact},
+                        state: {newFact},
                         idx: idx
                     }}
                 >
@@ -51,7 +51,7 @@ function AddFactForm({fact, handleDeleteFact, user, idx}) {
             {/* {fact.owner===user._id ? */}
                 <button
                     className='btn-delete'
-                    onClick={() => handleDeleteFact(fact._id, idx)}
+                    onClick={() => handleDeleteFact(newFact._id, idx)}
                 >DELETE</button>
                 {/* :
                 <></>
