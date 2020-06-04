@@ -8,7 +8,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 import AddFactPage from '../AddFactPage/AddFactPage';
-import UpdateFactPage from '../UpdateFactPage/UpdateFactPage';
+// import UpdateFactPage from '../UpdateFactPage/UpdateFactPage';
+import EditFactPage from '../EditFactPage/EditFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
@@ -19,9 +20,11 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      fact: [],
+      fact: []
     };
   }
+
+  /*-------------- Callback Methods --------------*/
 
   handleLogout = () => {
     userService.logout();
@@ -32,13 +35,6 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
-  async componentDidMount() {
-    console.log(this.state);
-    console.log(this.state.user);
-    const newFact = await factService.index();
-    this.setState({ fact: newFact })
-  }
-
   handleAddFact = async newFactData => {
     newFactData.user = this.state.user.id
     const newFact = await factService.addFact(newFactData);
@@ -46,11 +42,9 @@ class App extends Component {
     oldFact.push(newFact)
     this.setState({ newFact: oldFact })
     // this.setState({ fact: [...this.state.fact, newFact] })
-    // this.setState(state => ({
+    // this.setState( state => ({
     //   fact: [...state.fact, newFact]
-    // }),
-    // () => this.props.history.push('/')
-    // )
+    // }), () => this.props.history.push('/') );
   }
 
   handleDeleteFact = async id => {
@@ -61,27 +55,26 @@ class App extends Component {
     )
   }
 
-  handleUpdateFact = async updatedFactData => {
-    const updatedFact = await factService.update(updatedFactData);
-    const newUpdatedFact = this.state.newFact.map(fact =>
-      fact._id === updatedFact._id ? updatedFact : fact
+  handleUpdateFact = async (updatedFactData, idx) => {
+    const updatedFact = await factService.update(updatedFactData, idx);
+    const newUpdatedFact = this.state.fact.map(newFact =>
+      newFact._id === updatedFact._id ? updatedFact : newFact
     );
     this.setState(
-      {newFact: newUpdatedFact},
+      {fact: newUpdatedFact},
       () => this.props.history.push('/')
     );
   }
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   factService.addFact(this.state.newFact);
-  // }
+  /*-------------- Lifecycle Methods --------------*/
+  async componentDidMount() {
+    console.log(this.state);
+    console.log(this.state.user);
+    const newFact = await factService.index();
+    this.setState({ fact: newFact })
+  }
 
-  // handleChange = e => {
-  //     this.setState( {
-  //         [e.target.name]: e.target.value
-  //     } )
-  // }
+  /*-------------- Render --------------*/
   
   render() {
     return (
@@ -94,12 +87,14 @@ class App extends Component {
         />
 
         <Switch>
-          <Route exact path='/' render={() => 
+          <Route exact path='/' render={({history, location}) => 
             userService.getUser() ?
             <MainPage 
               user={this.state.user}
               handleDeleteFact={this.handleDeleteFact}
               fact={this.state.fact}
+              history={history}
+              location={location}
             />
             :
             <Redirect to='/login' />
@@ -112,9 +107,11 @@ class App extends Component {
             />
           } />
 
-          <Route exact path="/edit" render={() => 
-            <UpdateFactPage 
+          <Route exact path="/edit" render={({history, location}) => 
+            <EditFactPage 
               handleUpdateFact={this.handleUpdateFact}
+              history={history}
+              location={location}
             />
           } />
 

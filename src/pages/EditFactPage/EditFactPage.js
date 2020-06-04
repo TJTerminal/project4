@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class AddFactPage extends Component {
+class EditFactPage extends Component {
     state = {
-        factData: {
-            title: '',
-            content: '',
-        },
+        factData: this.props.location.state.newFact,
         invalidForm: true,
+        idx: this.props.location.idx
     };
    
     formRef = React.createRef();
 
-    handleSubmit = async (e) => {
+    handleSubmit = e => {
         e.preventDefault();
-        const formData = this.state.factData;
-        console.log('user: ', this.props.user._id);
-        formData.user = this.props.user._id;
-        await this.setState({factData: formData});
-        console.log('sending the following fact to handleAddFact from AddFactPage inside handleSubmit');
-        console.log(formData);
-        this.props.handleAddFact(formData);
+        this.props.handleUpdateFact(this.state.factData, this.state.idx, this.props.location.state.newFact._id)
       }
     
     handleChange = e => {
@@ -33,7 +26,7 @@ class AddFactPage extends Component {
     render() {
         return (
             <div>
-                <h1>Add Fact</h1>
+                <h1>Edit Fact</h1>
                 <form onSubmit={this.handleSubmit} ref={this.formRef}>
                     <div className='form-group'>
                         <label>Fact Title:</label>
@@ -56,12 +49,14 @@ class AddFactPage extends Component {
                         />
                     </div>
                     <button type='submit' disabled={this.state.invalidForm}>
-                        ADD FACT
+                        SAVE FACT
                     </button>
+                    &nbsp;&nbsp;
+                    <Link to='/'>CANCEL</Link>
                 </form>
             </div>
         )
     }
 }
 
-export default AddFactPage;
+export default EditFactPage;
