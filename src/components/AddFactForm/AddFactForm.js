@@ -6,10 +6,6 @@ import { Link } from 'react-router-dom';
 function AddFactForm({newFact, handleDeleteFact, user, idx}) {
     return (
         <div clasName='panel panel-default'>
-            <h1>Add Fact Form</h1>
-            {/* <div className='panel-heading'>
-                <h3>{fact.title}</h3>
-            </div> */}
             <div className='panel-body'>
                 <dl>
                     <dt>Title:</dt>

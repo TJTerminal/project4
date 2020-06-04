@@ -12,34 +12,6 @@ function index() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
-// function addFact(newFact) {
-//   return fetch(BASE_URL, {
-//     method: 'POST',
-//     headers: new Headers({'Content-Type': 'application/json'}),
-//     body: JSON.stringify(newFact)
-//   })
-//   .then(res => {
-//     if (res.ok) return res.json();
-//     // Probably a duplicate email
-//     throw new Error('something went wrong!');
-//   })
-//   .then((data) => {
-//     console.log(data)
-    
-//   });
-// }
-
-// function addFact(newFact) {
-//     return fetch(BASE_URL, {
-//       method: 'POST',
-//       headers: {
-//           'Content-Type': 'application/json', 
-//           'Authorization': 'Bearer ' + tokenService.getToken()
-//         },
-//       body: JSON.stringify(newFact)
-//     }).then( res => res.json())
-// }
-
 function addFact(newFact) {
   console.log('newfact: ', newFact)
     const options = {
@@ -60,8 +32,8 @@ function addFact(newFact) {
     });
 }
 
-function deleteOne(id) {
-    return fetch(BASE_URL + id, {
+function deleteOne(idx) {
+    return fetch(`${BASE_URL}/${idx}`, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
@@ -69,8 +41,8 @@ function deleteOne(id) {
     }).then(res => res.json());
 }
 
-function update(newFact) {   
-    return fetch(BASE_URL + newFact._id, {
+function update(newFact, idx) {   
+    return fetch(`${BASE_URL}/${idx}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json', 

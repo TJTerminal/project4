@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import MainPage from '../MainPage/MainPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
+import MainPage from '../MainPage/MainPage';
 import AddFactPage from '../AddFactPage/AddFactPage';
-// import UpdateFactPage from '../UpdateFactPage/UpdateFactPage';
 import EditFactPage from '../EditFactPage/EditFactPage';
 
 import userService from '../../utils/userService';
 import factService from '../../utils/factService';
-
 
 class App extends Component {
   constructor() {
@@ -47,13 +45,13 @@ class App extends Component {
     // }), () => this.props.history.push('/') );
   }
 
-  handleDeleteFact = async id => {
-    await factService.deleteOne(id);
-    this.setState(state => ({
-      fact: state.fact.filter(p => p.id !== id)
-    }), () => this.props.history.push('/')
-    )
-  }
+  // handleDeleteFact = async id => {
+  //   await factService.deleteOne(id);
+  //   this.setState(state => ({
+  //     fact: state.fact.filter(p => p.id !== id)
+  //   }), () => this.props.history.push('/')
+  //   )
+  // }
 
   handleUpdateFact = async (updatedFactData, idx) => {
     const updatedFact = await factService.update(updatedFactData, idx);
@@ -91,7 +89,7 @@ class App extends Component {
             userService.getUser() ?
             <MainPage 
               user={this.state.user}
-              handleDeleteFact={this.handleDeleteFact}
+              // handleDeleteFact={this.handleDeleteFact}
               fact={this.state.fact}
               history={history}
               location={location}
@@ -103,7 +101,7 @@ class App extends Component {
           <Route exact path="/add" render={() => 
             <AddFactPage 
               handleAddFact={this.handleAddFact}
-              user={this.state.user}
+              // user={this.state.user}
             />
           } />
 

@@ -12,7 +12,7 @@ class EditFactPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleUpdateFact(this.state.factData, this.state.idx, this.props.location.state.newFact._id)
+        this.props.handleUpdateFact(this.state.factData, this.state.idx, this.props.location.state.newFact._id);
       }
     
     handleChange = e => {

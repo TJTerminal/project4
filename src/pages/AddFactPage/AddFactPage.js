@@ -13,13 +13,13 @@ class AddFactPage extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = this.state.factData;
-        console.log('user: ', this.props.user._id);
-        formData.user = this.props.user._id;
-        await this.setState({factData: formData});
-        console.log('sending the following fact to handleAddFact from AddFactPage inside handleSubmit');
-        console.log(formData);
-        this.props.handleAddFact(formData);
+        // const formData = this.state.factData;
+        // console.log('user: ', this.props.user._id);
+        // formData.user = this.props.user._id;
+        // await this.setState({factData: formData});
+        // console.log('sending the following fact to handleAddFact from AddFactPage inside handleSubmit');
+        // console.log(formData);
+        this.props.handleAddFact(this.state.factData);
       }
     
     handleChange = e => {

@@ -8,7 +8,6 @@ import './MainPage.css';
 import factService from '../../utils/factService';
 
 import AddFactForm from '../../components/AddFactForm/AddFactForm';
-import AddFactPage from '../AddFactPage/AddFactPage';
 
 // const MainPage = props => {
 //     return (
@@ -46,10 +45,10 @@ class MainPage extends Component {
         console.log(this.state.user);
         const newFact = await factService.index();
         this.setState({ fact: newFact })
-      }
+    }
     
-    handleDeleteFact = async id => {
-        await factService.deleteOne(id);
+    handleDeleteFact = async (id, idx) => {
+        await factService.deleteOne(idx);
         this.setState(state => ({
             fact: state.fact.filter(p => p.id !== id)
         }), () => this.props.history.push('/')
@@ -57,7 +56,7 @@ class MainPage extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="MainPage">
                 <h1>ALL FACTS LIST</h1>
                 <div className='MainPage-grid'>
