@@ -12,8 +12,6 @@ const NavBar = (props) => {
           &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <Link to='' className='NavBar-link' onClick={props.handleLogout}>LOG OUT</Link>
           &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          {/* <Link to='all' className='NavBar-link'>RANKING</Link>
-          &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; */}
           <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
         </div>
         ) : (
@@ -29,14 +27,6 @@ const NavBar = (props) => {
           {nav}
         </div>
       );
-
-//   return (
-//     <div className='NavBar'>
-//       <Link to="/login" className='NavBar-link'>LOG IN</Link>
-//       &nbsp;&nbsp;|&nbsp;&nbsp;
-//       <Link to="/signup" className='NavBar-link'>SIGN UP</Link>
-//     </div>
-//   );
 };
 
 export default NavBar;

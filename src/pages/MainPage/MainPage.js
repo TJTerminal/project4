@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import './MainPage.css';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-// import NavBar from '../../components/NavBar/NavBar';
-// import AddFactPage from '../AddFactPage/AddFactPage';
-// import userService from '../../utils/userService';
 import factService from '../../utils/factService';
 
 import AddFactForm from '../../components/AddFactForm/AddFactForm';
@@ -70,18 +65,6 @@ class MainPage extends Component {
                         />
                     )}
                 </div>
-                
-               {/* {this.state.newFact.map((fact, idx) => (
-                   
-                   <AddFactPage 
-                    handleSubmit={this.props.handleSubmit} 
-                    handleChange={this.props.handleChange}
-                    key={idx}
-                    fact={fact}
-                    />
-               ) )}
-                
-                <h1>This is MainPage!</h1> */}
             </div>
         )
     }

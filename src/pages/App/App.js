@@ -53,7 +53,7 @@ class App extends Component {
     )
   }
 
-  handleUpdateFact = async (updatedFactData) => {
+  handleUpdateFact = async updatedFactData => {
     const updatedFact = await factService.update(updatedFactData);
     const newUpdatedFact = this.state.fact.map(newFact =>
       newFact._id === updatedFact._id ? updatedFact : newFact

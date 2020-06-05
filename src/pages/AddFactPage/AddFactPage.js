@@ -11,7 +11,7 @@ class AddFactPage extends Component {
    
     formRef = React.createRef();
 
-    handleSubmit = async (e) => {
+    handleSubmit = e => {
         e.preventDefault();
         // const formData = this.state.factData;
         // console.log('user: ', this.props.user._id);
