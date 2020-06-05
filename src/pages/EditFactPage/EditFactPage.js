@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class EditFactPage extends Component {
     state = {
         factData: this.props.location.state.newFact,
-        invalidForm: true,
+        invalidForm: false,
         idx: this.props.location.idx
     };
    

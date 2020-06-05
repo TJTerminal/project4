@@ -45,16 +45,16 @@ class App extends Component {
     // }), () => this.props.history.push('/') );
   }
 
-  // handleDeleteFact = async id => {
-  //   await factService.deleteOne(id);
-  //   this.setState(state => ({
-  //     fact: state.fact.filter(p => p.id !== id)
-  //   }), () => this.props.history.push('/')
-  //   )
-  // }
+  handleDeleteFact = async id => {
+    await factService.deleteOne(id);
+    this.setState(state => ({
+      fact: state.fact.filter(p => p.id !== id)
+    }), () => this.props.history.push('/')
+    )
+  }
 
-  handleUpdateFact = async (updatedFactData, idx) => {
-    const updatedFact = await factService.update(updatedFactData, idx);
+  handleUpdateFact = async (updatedFactData) => {
+    const updatedFact = await factService.update(updatedFactData);
     const newUpdatedFact = this.state.fact.map(newFact =>
       newFact._id === updatedFact._id ? updatedFact : newFact
     );

@@ -47,7 +47,7 @@ function AddFactForm({newFact, handleDeleteFact, user, idx}) {
             {/* {fact.owner===user._id ? */}
                 <button
                     className='btn-delete'
-                    onClick={() => handleDeleteFact(newFact._id, idx)}
+                    onClick={() => handleDeleteFact(newFact._id)}
                 >DELETE</button>
                 {/* :
                 <></>

@@ -26,7 +26,7 @@ async function create(req, res) {
 
 async function show(req, res) {
     try {
-        const facts = await Fact.findById(req.params.id).populate('votes');
+        const facts = await Fact.findById(req.params.id);
         res.status(200).json(facts)
     } catch(err) {
         res.status(500).json(err)
@@ -43,6 +43,7 @@ async function update(req, res) {
 }
 
 async function deleteOne(req, res) {
+    console.log('Hitting Delete Controllers!!')
     try {
         const deletedFact = await Fact.findByIdAndDelete(req.params.id);
         res.status(500).json(deletedFact);

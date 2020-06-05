@@ -6,7 +6,7 @@ class AddFactPage extends Component {
             title: '',
             content: '',
         },
-        invalidForm: true,
+        invalidForm: true
     };
    
     formRef = React.createRef();

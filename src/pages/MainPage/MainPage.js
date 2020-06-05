@@ -47,8 +47,8 @@ class MainPage extends Component {
         this.setState({ fact: newFact })
     }
     
-    handleDeleteFact = async (id, idx) => {
-        await factService.deleteOne(idx);
+    handleDeleteFact = async id => {
+        await factService.deleteOne(id);
         this.setState(state => ({
             fact: state.fact.filter(p => p.id !== id)
         }), () => this.props.history.push('/')

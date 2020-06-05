@@ -32,8 +32,8 @@ function addFact(newFact) {
     });
 }
 
-function deleteOne(idx) {
-    return fetch(`${BASE_URL}/${idx}`, {
+function deleteOne(id) {
+    return fetch(BASE_URL + id, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
@@ -41,8 +41,8 @@ function deleteOne(idx) {
     }).then(res => res.json());
 }
 
-function update(newFact, idx) {   
-    return fetch(`${BASE_URL}/${idx}`, {
+function update(newFact) {   
+    return fetch(BASE_URL + newFact._id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json', 
